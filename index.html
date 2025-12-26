@@ -1,0 +1,528 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CreatorSiteUA — Сайти від 200 грн 🎄</title>
+  <meta name="description" content="Сайти на HTML від 200 грн. Мій хост — не треба платити за домен. Замовлення: @creatorsiteua" />
+
+  <style>
+    :root{
+      --bg1:#06140d;
+      --bg2:#0b2b1b;
+      --card: rgba(255,255,255,.07);
+      --line: rgba(255,255,255,.14);
+      --white:#ffffff;
+      --muted: rgba(255,255,255,.78);
+      --green:#19d27c;
+      --green2:#b8ffd9;
+      --red:#ff3b3b;
+      --red2:#ff6a6a;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius:22px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--white);
+      overflow-x:hidden;
+      background:
+        radial-gradient(900px 500px at 20% 0%, rgba(25,210,124,.30), transparent 60%),
+        radial-gradient(900px 500px at 80% 0%, rgba(255,59,59,.22), transparent 60%),
+        linear-gradient(180deg, var(--bg2) 0%, var(--bg1) 70%, #020b06 100%);
+    }
+
+    /* Snow behind everything */
+    #snow{position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.9;}
+
+    .wrap{position:relative; z-index:1; max-width:1120px; margin:0 auto; padding:22px;}
+
+    @keyframes floaty{0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)}}
+    @keyframes glow{0%,100%{box-shadow:0 0 0 rgba(0,0,0,0)} 50%{box-shadow:0 0 36px rgba(25,210,124,.22)}}
+
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:rgba(255,255,255,.06);
+      backdrop-filter:blur(10px);
+      box-shadow:var(--shadow);
+      animation: fadeUp .5s ease both;
+    }
+    .brand{display:flex; align-items:center; gap:12px;}
+    .logo{
+      width:42px;height:42px;border-radius:14px;
+      background:conic-gradient(from 180deg, var(--green), var(--white), var(--red), var(--green));
+      border:1px solid rgba(255,255,255,.18);
+      animation: floaty 3.2s ease-in-out infinite;
+    }
+    .brand h1{margin:0;font-size:15px}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    .nav{
+      display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:flex-end;
+    }
+    .nav a{
+      text-decoration:none;
+      color:var(--muted);
+      font-weight:800;
+      font-size:12px;
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.14);
+      transition:transform .15s ease, filter .15s ease;
+      white-space:nowrap;
+    }
+    .nav a:hover{transform:translateY(-1px); filter:brightness(1.05); color:#fff;}
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:var(--card);
+      backdrop-filter:blur(10px);
+      box-shadow:var(--shadow);
+      padding:18px;
+      animation: fadeUp .65s ease both;
+    }
+
+    .hero{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:16px;
+      align-items:stretch;
+    }
+
+    .headline{margin:0 0 10px; font-size:38px; line-height:1.06;}
+    .sub{margin:0 0 12px; color:var(--muted); font-size:14px; line-height:1.6;}
+
+    .badges{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;}
+    .badge{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.18);
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 16px;
+      border-radius:16px;
+      text-decoration:none;
+      font-weight:900;
+      color:#08140d;
+      background:linear-gradient(135deg,var(--green),var(--green2));
+      border:1px solid rgba(255,255,255,.16);
+      transition:transform .15s ease, filter .15s ease;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+    .btn:hover{transform:translateY(-1px); filter:brightness(1.03);}
+    .btnRed{
+      color:#fff;
+      background:linear-gradient(135deg,var(--red),var(--red2));
+      border:1px solid rgba(255,255,255,.18);
+    }
+    .btnGhost{
+      color:#fff;
+      background:rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.14);
+      font-weight:900;
+    }
+
+    .ctaRow{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px;}
+    .divider{height:1px; background:rgba(255,255,255,.14); margin:14px 0;}
+
+    .grid2{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px;}
+    .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:12px;}
+
+    .tile{
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:18px;
+      background:rgba(0,0,0,.16);
+      padding:14px;
+    }
+    .tile h3{margin:0 0 6px; font-size:15px;}
+    .tile p{margin:0; color:var(--muted); font-size:13px; line-height:1.6;}
+
+    .price{
+      border:1px solid rgba(255,255,255,.14);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(0,0,0,.12));
+      border-radius:18px;
+      padding:14px;
+      position:relative;
+      overflow:hidden;
+      animation: glow 4.8s ease-in-out infinite;
+    }
+    .price:before{
+      content:"";
+      position:absolute; inset:-60px;
+      background:
+        radial-gradient(circle at 30% 10%, rgba(25,210,124,.18), transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255,59,59,.14), transparent 55%);
+      transform: rotate(8deg);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .price > *{position:relative; z-index:1;}
+    .price h3{margin:0 0 6px; font-size:15px;}
+    .amount{margin:0 0 8px; font-size:26px; font-weight:950;}
+    .ul{margin:0; padding-left:18px; color:var(--muted); font-size:13px; line-height:1.65;}
+
+    .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:12px;}
+    .step{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.16);
+      border-radius:18px;
+      padding:14px;
+    }
+    .step .n{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:32px; height:32px; border-radius:12px;
+      background:rgba(25,210,124,.16);
+      border:1px solid rgba(25,210,124,.28);
+      color:#d9ffe9;
+      font-weight:950;
+      margin-bottom:10px;
+    }
+    .step h4{margin:0 0 6px; font-size:14px;}
+    .step p{margin:0; color:var(--muted); font-size:13px; line-height:1.6;}
+
+    details{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.16);
+      border-radius:18px;
+      padding:12px 14px;
+    }
+    details summary{
+      cursor:pointer;
+      font-weight:900;
+      color:#fff;
+      list-style:none;
+    }
+    details summary::-webkit-details-marker{display:none;}
+    details p{margin:10px 0 0; color:var(--muted); font-size:13px; line-height:1.6;}
+
+    .footer{
+      margin-top:16px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.05);
+      padding:16px;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.7;
+    }
+    .tg{color:#fff; font-weight:950;}
+
+    .center{text-align:center;}
+
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr;}
+      .grid2{grid-template-columns:1fr;}
+      .grid3{grid-template-columns:1fr;}
+      .steps{grid-template-columns:1fr;}
+      .headline{font-size:32px;}
+      .nav{justify-content:flex-start;}
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="snow"></canvas>
+
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>CreatorSiteUA</h1>
+          <p>Сайти на HTML • мій хост • без домену</p>
+        </div>
+      </div>
+
+      <!-- ✅ Без першої кнопки Telegram -->
+      <nav class="nav">
+        <a href="#benefits">Чому я</a>
+        <a href="#portfolio">Приклади</a>
+        <a href="#price">Прайс</a>
+        <a href="#faq">FAQ</a>
+        <a href="#order">Замовити</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card">
+        <h2 class="headline">Сайт, який реально продає — <span style="color:var(--green)">від 200 грн</span> 🎄</h2>
+        <p class="sub">
+          Зроблю стильний лендінг під бізнес/послуги: чітка структура, швидке завантаження, адаптив під телефон і ПК,
+          плавні анімації та “дорога” подача.
+          <br><br>
+          ✅ Розміщення на <b>моєму хості</b> — <b>домен не обов’язковий</b> (можна не платити зайве).
+        </p>
+
+        <div class="badges">
+          <div class="badge">HTML / CSS / JS</div>
+          <div class="badge">Адаптив</div>
+          <div class="badge">Швидко</div>
+          <div class="badge">Гарний дизайн</div>
+          <div class="badge">Сніг + плавні ефекти</div>
+        </div>
+
+        <div class="ctaRow">
+          <a class="btn btnRed" href="#price">Подивитись прайс</a>
+          <a class="btn btnGhost" href="#portfolio">Приклади блоків</a>
+          <a class="btn" href="#order">Оформити замовлення</a>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="grid2">
+          <div class="tile">
+            <h3>Фокус на результат</h3>
+            <p>Зроблю структуру “зрозуміло з першого погляду”: що ти пропонуєш, чому це вигідно і як швидко замовити.</p>
+          </div>
+          <div class="tile">
+            <h3>Без зайвих витрат</h3>
+            <p>Мій хост входить у вартість — домен не обов’язковий. Якщо захочеш домен — зробимо окремо.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card" style="animation: fadeUp .65s ease both, floaty 5.2s ease-in-out infinite;">
+        <h3 style="margin:0 0 8px; font-size:16px;">Кому підійде</h3>
+        <ul class="ul">
+          <li>Послуги: майстер, ремонт, доставка, освіта</li>
+          <li>Малий бізнес: кафе, салон, студія</li>
+          <li>Сторінка-візитка: експерт, портфоліо</li>
+          <li>Сторінка під запуск продукту</li>
+        </ul>
+
+        <div class="divider"></div>
+
+        <h3 style="margin:0 0 8px; font-size:16px;">Що буде на сайті</h3>
+        <ul class="ul">
+          <li>Головний екран (суть + кнопка)</li>
+          <li>Переваги / чому обрати вас</li>
+          <li>Прайс / пакети</li>
+          <li>FAQ / відповіді</li>
+          <li>Контакти та кнопка замовлення</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="benefits" class="card" style="margin-top:16px;">
+      <h3 style="margin:0 0 8px; font-size:18px;">Чому покупцю буде вигідно</h3>
+      <p class="sub" style="margin:0;">
+        Твій сайт буде виглядати акуратно і “дорого”, працюватиме швидко та буде зручним на телефоні.
+        Це підвищує довіру і збільшує кількість звернень.
+      </p>
+
+      <div class="grid3">
+        <div class="tile">
+          <h3>Швидкість</h3>
+          <p>Легкий HTML-сайт — відкривається швидко, без “тормозів”.</p>
+        </div>
+        <div class="tile">
+          <h3>Довіра</h3>
+          <p>Структура і стиль роблять твою пропозицію зрозумілою — люди частіше пишуть.</p>
+        </div>
+        <div class="tile">
+          <h3>Зручність</h3>
+          <p>Адаптив під телефон + чіткі кнопки дії: “Замовити”, “Контакти”, “Прайс”.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="card" style="margin-top:16px;">
+      <h3 style="margin:0 0 8px; font-size:18px;">Приклади блоків (як буде виглядати)</h3>
+      <p class="sub" style="margin:0 0 12px;">
+        Це шаблонні приклади секцій. Під твою нішу я підставлю тексти, пакети та стиль.
+      </p>
+
+      <div class="grid2">
+        <div class="tile">
+          <h3>Блок “Переваги”</h3>
+          <p>3–6 коротких причин, чому клієнт має обрати саме тебе (швидко, гарантія, досвід, якість).</p>
+        </div>
+        <div class="tile">
+          <h3>Блок “FAQ”</h3>
+          <p>Питання-відповіді закривають сумніви: ціна, терміни, що входить, як замовити.</p>
+        </div>
+        <div class="tile">
+          <h3>Блок “Пакети”</h3>
+          <p>Коли є пакети (200/300/400) — покупцю простіше вибрати і швидше написати.</p>
+        </div>
+        <div class="tile">
+          <h3>Блок “Контакти”</h3>
+          <p>Кнопка Telegram + контакти. Мінімум кліків — максимум заявок.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="price" class="card" style="margin-top:16px;">
+      <h3 style="margin:0 0 8px; font-size:18px;">Прайс</h3>
+
+      <div class="grid3">
+        <div class="price">
+          <h3>HTML — базовий</h3>
+          <p class="amount">від 200 грн</p>
+          <ul class="ul">
+            <li>Одна сторінка (лендінг)</li>
+            <li>Текст + кнопки + контакти</li>
+            <li>Базове оформлення</li>
+            <li>Мій хост → <b>без оплати домену</b></li>
+          </ul>
+        </div>
+
+        <div class="price">
+          <h3>HTML + CSS/JS</h3>
+          <p class="amount">від 300 грн</p>
+          <ul class="ul">
+            <li>Більше секцій/блоків</li>
+            <li>Плавні анімації, ефекти</li>
+            <li>Кращий “дорогий” стиль</li>
+            <li>Мій хост → <b>без оплати домену</b></li>
+          </ul>
+        </div>
+
+        <div class="price">
+          <h3>Преміум дизайн</h3>
+          <p class="amount">від 400 грн</p>
+          <ul class="ul">
+            <li>Максимально стильний вигляд</li>
+            <li>Деталі, подача, акценти</li>
+            <li>Виглядає як “дорогий” сайт</li>
+            <li>Мій хост → <b>без оплати домену</b></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <h3 style="margin:0 0 8px; font-size:18px;">Як ми зробимо сайт</h3>
+      <div class="steps">
+        <div class="step">
+          <div class="n">1</div>
+          <h4>Ти пишеш у Telegram</h4>
+          <p>Що за нішa, що треба на сайті, які пакети/ціни, які контакти.</p>
+        </div>
+        <div class="step">
+          <div class="n" style="background:rgba(255,59,59,.16); border-color:rgba(255,59,59,.28);">2</div>
+          <h4>Я збираю структуру</h4>
+          <p>Підбираю блоки, роблю чистий дизайн і додаю плавні анімації.</p>
+        </div>
+        <div class="step">
+          <div class="n" style="background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.22); color:#fff;">3</div>
+          <h4>Заливаю на свій хост</h4>
+          <p>Даєш фінальні правки → отримуєш посилання на готовий сайт.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="card" style="margin-top:16px;">
+      <h3 style="margin:0 0 8px; font-size:18px;">FAQ</h3>
+
+      <div class="grid2">
+        <details open>
+          <summary>Чи треба купувати домен?</summary>
+          <p>Ні. Я розміщую сайт на своєму хості, тому домен не обов’язковий. Якщо захочеш власний домен — підключимо окремо.</p>
+        </details>
+        <details>
+          <summary>Що потрібно від мене для старту?</summary>
+          <p>Короткий опис послуги/бізнесу, прайс або пакети, контакти та (за бажанням) фото/логотип.</p>
+        </details>
+        <details>
+          <summary>Чи можна додати анімації/ефекти?</summary>
+          <p>Так. Можу додати CSS/JS ефекти, плавні переходи, підсвітки, мікроанімації, а також новорічний “сніг”.</p>
+        </details>
+        <details>
+          <summary>Як виглядає процес правок?</summary>
+          <p>Ти пишеш, що змінити — я оновлюю. Невеликі правки по тексту/блокам роблю швидко.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="order" class="card center" style="margin-top:16px;">
+      <h3 style="margin:0 0 8px; font-size:20px;">Замовити сайт</h3>
+      <p class="sub" style="margin:0 0 14px;">
+        Напиши мені в Telegram і скинь коротко:<br>
+        <b>ніша</b> • <b>прайс/пакети</b> • <b>що має бути на сайті</b> • <b>контакти</b> • <b>термін</b>.
+      </p>
+
+      <!-- ✅ ЄДИНА Telegram-кнопка тут -->
+      <a class="btn btnRed" href="https://t.me/creatorsiteua" target="_blank" rel="noopener">
+        ✉️ Написати @creatorsiteua
+      </a>
+
+      <div class="divider"></div>
+
+      <p class="sub" style="margin:0;">
+        🎄 З наступаючим! Зробимо тобі сайт, який буде виглядати круто і приносити заявки.
+      </p>
+    </section>
+
+    <footer id="disclaimer" class="footer">
+      <b>Дисклеймер:</b><br>
+      • Ціни вказані “від” і залежать від кількості блоків, складності дизайну та терміновості.<br>
+      • Розміщення на <b>моєму хості</b> входить у вартість — тому <b>домен не обовʼязковий</b>.<br>
+      • Власний домен (.com / .ua тощо) — за бажанням і оплачується окремо.<br>
+      • Для старту потрібні матеріали: текст/пакети/контакти та (за бажанням) фото/логотип.<br><br>
+      Контакт: <span class="tg">@creatorsiteua</span>
+    </footer>
+  </div>
+
+  <script>
+    // Snow effect (no libs)
+    const canvas = document.getElementById("snow");
+    const ctx = canvas.getContext("2d");
+    let w, h, flakes;
+
+    function resize(){
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+      const count = Math.min(180, Math.floor(w / 7));
+      flakes = Array.from({length: count}, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: 0.8 + Math.random() * 2.6,
+        s: 0.4 + Math.random() * 1.3,
+        d: Math.random() * Math.PI * 2
+      }));
+    }
+    resize();
+    window.addEventListener("resize", resize);
+
+    function draw(){
+      ctx.clearRect(0,0,w,h);
+      ctx.beginPath();
+      for(const f of flakes){
+        ctx.moveTo(f.x, f.y);
+        ctx.arc(f.x, f.y, f.r, 0, Math.PI*2);
+      }
+      ctx.fillStyle = "rgba(255,255,255,0.85)";
+      ctx.fill();
+
+      for(const f of flakes){
+        f.y += f.s;
+        f.x += Math.sin(f.d) * 0.6;
+        f.d += 0.01;
+
+        if(f.y > h + 10){ f.y = -10; f.x = Math.random() * w; }
+        if(f.x > w + 10) f.x = -10;
+        if(f.x < -10) f.x = w + 10;
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  </script>
+</body>
+</html>
